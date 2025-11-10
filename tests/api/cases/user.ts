@@ -31,7 +31,7 @@ test.describe("Users API", () => {
     const responseBody = await response.json();
     const users = responseBody.data || [];
 
-    const oddIdUsers = users.filter((user: any) => user.id % 2 !== 0); //ovde moram da vidim da ispisem i usera sa 1
+    const oddIdUsers = users.filter((user: any) => user.id % 2 === 1);
 
     console.log("Users with odd IDs:");
     for (const user of oddIdUsers) {
