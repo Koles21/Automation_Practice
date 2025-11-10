@@ -1,0 +1,61 @@
+{
+  "name": "msg_automation_tests",
+  "version": "1.0.0",
+  "description": "**UI and API tests for practice**",
+  "main": "index.js",
+  "scripts": {
+    "lint": "eslint . --fix",
+    "format": "prettier --write \"./**/*.{ts,js,mjs,json}\"",
+    "prepare": "husky",
+    "allure-report": "allure generate allure-results --clean -o allure-report && allure open allure-report",
+    "api:dev:allure-report": "cross-env ENV=dev npx playwright test --project=api || set ERR=1 && npm run allure-report",
+    "api:dev": "cross-env ENV=dev npx playwright test --project=api || set ERR=1",
+    "chromium:dev:allure-report": "cross-env ENV=dev npx playwright test --project=chromium || set ERR=1 && npm run allure-report",
+    "edge:dev:allure-report": "cross-env ENV=dev npx playwright test --project=edge-ui || set ERR=1 && npm run allure-report",
+    "ui:dev:edge": "cross-env ENV=dev npx playwright test --project=edge-ui",
+    "ui:dev:chrome:standardUser": "cross-env ENV=dev npx playwright test --project=chromium-standard --headed",
+    "ui:dev:chrome:problemUser": "cross-env ENV=dev npx playwright test --project=chromium-problem --headed",
+    "ui:dev:chrome:lockedUser": "cross-env ENV=dev npx playwright test --project=chromium-locked --headed"
+  },
+  "keywords": [],
+  "authors": "Filip Kostic",
+  "license": "ISC",
+  "husky": {
+    "hooks": {
+      "pre-commit": "npm run lint"
+    }
+  },
+  "lint-staged": {
+    "*.{ts,js,mjs}": [
+      "npm run lint",
+      "npm run format"
+    ],
+    "ignorePatterns": [
+      ",.husky/",
+      "node_modules/",
+      ".git/"
+    ]
+  },
+  "devDependencies": {
+    "@playwright/test": "^1.49.0",
+    "@types/node": "^22.9.3",
+    "allure-commandline": "^2.32.0",
+    "allure-playwright": "^3.0.9",
+    "cross-env": "^7.0.3",
+    "dotenv": "^16.4.5",
+    "eslint": "^9.15.0",
+    "eslint-config-prettier": "^9.1.0",
+    "eslint-plugin-prettier": "^5.2.1",
+    "globals": "^15.12.0",
+    "husky": "^9.1.7",
+    "prettier": "^3.6.2",
+    "typescript-eslint": "^8.15.0"
+  },
+  "dependencies": {
+    "@faker-js/faker": "^9.8.0",
+    "fast-xml-parser": "^5.2.5",
+    "formdata-node": "^6.0.3",
+    "lodash": "^4.17.21",
+    "moment": "^2.30.1"
+  }
+}
