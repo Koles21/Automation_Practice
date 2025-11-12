@@ -1,6 +1,7 @@
 Playwright Automation Framework
 
-This repository contains an end-to-end test automation framework built with Playwright and TypeScript, covering both UI and API testing within a single project.
+This repository contains an end-to-end test automation framework built with Playwright and TypeScript, covering both UI testing for SauceLab and API testing for Regres within a single project.
+Writting both UI and API tests within the same project is used rather than in separate ones, mainly because of easier maintenance.
 
 Project Overview
 
@@ -9,8 +10,6 @@ The goal of this setup is to have both UI and API tests in one unified framework
 UI tests validate user interactions, page navigation, and element visibility.
 
 API tests validate backend responses, endpoints, and data consistency.
-
-By combining both test types, the framework ensures the system works as a whole — from request to visual confirmation.
 
 Tech Stack
 
@@ -28,34 +27,28 @@ Package Manager: npm Setup & Run
 1. Install dependencies
 npm install
 
-2. Run all tests
-npx playwright test
+2. Run API tests
+npm run api:dev
 
-3. Run only UI tests
-npx playwright test tests/ui
+3. Run UI tests for Standard user
+npm run ui:dev:chrome:standardUser
 
-4. Run only API tests
-npx playwright test tests/api
+4. Run UI tests for Locked user
+npm run ui:dev:chrome:lockedUser
 
-5. Run tests in headed mode (see the browser)
-npx playwright test --headed
+5. Run UI tests for Problem user
+npm run ui:dev:chrome:problemUser
 
-6. Run a specific test file
-npx playwright test tests/ui/product.ts
+Allure Reports
 
-🧾 Allure Reports
-1. Run tests and collect Allure results
-npx playwright test --reporter=line,allure-playwright
+1. Open the report
+npm run allure-report
 
-2. Generate the Allure report
-npx allure generate allure-results --clean -o allure-report
-
-3. Open the report
-npx allure open allure-report
-
-🧠 Notes
+Notes
 
 Requires Node.js v16+
+
+Requires Java v21+
 
 Environment variables are configured in .env.dev
 
@@ -63,9 +56,14 @@ Playwright automatically handles browser installation on the first run
 
 npx playwright install
 
-
 Reports and screenshots are stored in allure-results and test-results
 
 API Results in Allure report:
 <img width="942" height="449" alt="image" src="https://github.com/user-attachments/assets/7a8d3600-f830-48b0-94b9-d36fe12e1118" />
+UI Results for Standard User in Allure report: 
+<img width="851" height="310" alt="image" src="https://github.com/user-attachments/assets/eeffa391-2280-4e69-8d6d-f0f5e9e37c54" />
+UI Results for Locked out User in Allure report: 
+<img width="820" height="316" alt="image" src="https://github.com/user-attachments/assets/a3906691-9b32-4f12-9d67-780562a7e12f" />
+
+
 
