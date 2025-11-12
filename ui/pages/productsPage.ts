@@ -36,10 +36,8 @@ export class ProductsPage extends BasePage {
     await this.shoppingCartButton.click();
   }
 
-  async goToBikeLightProductDetails(): Promise<string> {
-    const bikeLightProduct = await this.bikeLightProduct.innerText();
+  async goToBikeLightProductDetails(): Promise<void> {
     await this.bikeLightProduct.click();
-    return bikeLightProduct;
   }
 
   async sortProductsByNameAtoZ(): Promise<void> {

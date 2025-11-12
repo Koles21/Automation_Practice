@@ -4,17 +4,22 @@ import { ProductsPage } from "../../ui/pages/productsPage";
 import { SauceLoginPage } from "../../ui/pages/SauceLoginPage";
 import { products } from "../../ui/constants/productsList";
 import { CartPage } from "../../ui/pages/cartPage";
-import { CheckoutPage } from "../../ui/pages/checkoutPage";
-import { CheckoutAssert } from "../../ui/asserts/checkoutAssert";
 import { BikeLightProductPage } from "../../ui/pages/bikeLightProductPage";
 import { CartAssert } from "../../ui/asserts/cartAssert";
 import { LoginAssert } from "../../ui/asserts/loginAssert";
 import { ProductAssert } from "../../ui/asserts/productAssert";
+import { CheckoutInformationPage } from "../../ui/pages/checkoutInformationPage";
+import { CheckoutCompletePage } from "../../ui/pages/checkoutCompletePage";
+import { CheckoutOverviewPage } from "../../ui/pages/checkoutOverviewPage";
+import { CheckoutOverviewAssert } from "../../ui/asserts/checkoutOverviewAssert";
+import { CheckoutCompleteAssert } from "../../ui/asserts/checkoutCompleteAssert copy";
 
 test.describe("Product tests", () => {
   let productPage: ProductsPage;
   let cartPage: CartPage;
-  let checkoutPage: CheckoutPage;
+  let checkoutInformationPage: CheckoutInformationPage;
+  let checkoutCompletePage: CheckoutCompletePage;
+  let checkoutOverviewPage: CheckoutOverviewPage;
   let bikeLightProductPage: BikeLightProductPage;
   let sauceLoginPage: SauceLoginPage;
 
@@ -24,7 +29,9 @@ test.describe("Product tests", () => {
     sauceLoginPage = new SauceLoginPage(page);
     productPage = new ProductsPage(page);
     cartPage = new CartPage(page);
-    checkoutPage = new CheckoutPage(page);
+    checkoutInformationPage = new CheckoutInformationPage(page);
+    checkoutCompletePage = new CheckoutCompletePage(page);
+    checkoutOverviewPage = new CheckoutOverviewPage(page);
     bikeLightProductPage = new BikeLightProductPage(page);
 
     await sauceLoginPage.sauceLogin(sauceUsername, saucePassword, url);
@@ -43,12 +50,13 @@ test.describe("Product tests", () => {
     await productPage.goToCart();
     await cartPage.removeThirdProductFromCart();
     await cartPage.proceedToCheckout();
-    await checkoutPage.fillYourInformation();
-    await CheckoutAssert.checkoutAssert(checkoutPage);
-    await checkoutPage.finishCheckout();
-    await CheckoutAssert.finishShoppingAssert(checkoutPage);
+    await checkoutInformationPage.fillYourInformation();
+    await CheckoutOverviewAssert.checkoutCartAssert(checkoutOverviewPage, "5");
+    await checkoutOverviewPage.finishCheckout();
+    await CheckoutCompleteAssert.finishShoppingAssert(checkoutCompletePage);
   });
 
+  // problem user is not able to add products to cart
   test("Problem User should be able to add a product to cart", async () => {
     if (
       test.info().project.metadata.sauceUsername !==
@@ -57,10 +65,10 @@ test.describe("Product tests", () => {
       test.skip();
     }
 
-    const bikeLightProduct = await productPage.goToBikeLightProductDetails();
+    await productPage.goToBikeLightProductDetails();
     await bikeLightProductPage.addBikeLightToCart();
     await productPage.goToCart();
-    await CartAssert.cartAssert(cartPage, bikeLightProduct);
+    await CheckoutOverviewAssert.checkoutCartAssert(checkoutOverviewPage, "1");
   });
 
   test("Standard User should be able to sort products by name", async () => {

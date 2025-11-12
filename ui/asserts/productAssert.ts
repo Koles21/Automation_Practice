@@ -1,6 +1,6 @@
 import { expect } from "@playwright/test";
 import { ProductsPage } from "../pages/productsPage";
-import { uiProductNamesSorted } from "../../types/productsList";
+import { uiProductNamesSorted } from "../constants/productsList";
 
 export class ProductAssert {
   productPage!: ProductsPage;

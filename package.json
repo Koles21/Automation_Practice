@@ -10,8 +10,7 @@
     "allure-report": "allure generate allure-results --clean -o allure-report && allure open allure-report",
     "api:dev:allure-report": "cross-env ENV=dev npx playwright test --project=api || set ERR=1 && npm run allure-report",
     "api:dev": "cross-env ENV=dev npx playwright test --project=api || set ERR=1",
-    "chromium:dev:allure-report": "cross-env ENV=dev npx playwright test --project=chromium || set ERR=1 && npm run allure-report",
-    "ui:dev:edge": "cross-env ENV=dev npx playwright test --project=edge-ui",
+    "chromium:dev:allure-report": "cross-env ENV=dev npx playwright test --project=chromium-standard || set ERR=1 && npm run allure-report",
     "ui:dev:chrome:standardUser": "cross-env ENV=dev npx playwright test --project=chromium-standard --headed",
     "ui:dev:chrome:problemUser": "cross-env ENV=dev npx playwright test --project=chromium-problem --headed",
     "ui:dev:chrome:lockedUser": "cross-env ENV=dev npx playwright test --project=chromium-locked --headed"
