@@ -65,3 +65,7 @@ npx playwright install
 
 
 Reports and screenshots are stored in allure-results and test-results
+
+API Results in Allure report:
+<img width="942" height="449" alt="image" src="https://github.com/user-attachments/assets/7a8d3600-f830-48b0-94b9-d36fe12e1118" />
+
