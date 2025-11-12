@@ -60,8 +60,10 @@ Reports and screenshots are stored in allure-results and test-results
 
 API Results in Allure report:
 <img width="942" height="449" alt="image" src="https://github.com/user-attachments/assets/7a8d3600-f830-48b0-94b9-d36fe12e1118" />
+
 UI Results for Standard User in Allure report: 
 <img width="851" height="310" alt="image" src="https://github.com/user-attachments/assets/eeffa391-2280-4e69-8d6d-f0f5e9e37c54" />
+
 UI Results for Locked out User in Allure report: 
 <img width="820" height="316" alt="image" src="https://github.com/user-attachments/assets/a3906691-9b32-4f12-9d67-780562a7e12f" />
 
