@@ -67,5 +67,9 @@ UI Results for Standard User in Allure report:
 UI Results for Locked out User in Allure report: 
 <img width="820" height="316" alt="image" src="https://github.com/user-attachments/assets/a3906691-9b32-4f12-9d67-780562a7e12f" />
 
+UI Results for Problem User in Allure report:
+<img width="1567" height="560" alt="image" src="https://github.com/user-attachments/assets/5562e858-8fc1-4335-b481-5c2af58848b7" />
+
+
 
 
